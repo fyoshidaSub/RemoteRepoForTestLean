@@ -8,13 +8,13 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 abstract public class DataBaseManager {
-	static final String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	static final public String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
-	static final String dburl = "jdbc:sqlserver://mis.nagaokaut.ac.jp;DataBaseName=fyoshida";
+	static final public String dburl = "jdbc:sqlserver://mis.nagaokaut.ac.jp;DataBaseName=fyoshida";
 
-	static final String dbuser = "fyoshida";
+	static final public String dbuser = "fyoshida";
 
-	static final String dbpassword = "fyoshida";
+	static final public String dbpassword = "fyoshida";
 
 	protected void updateRecord(String query) {
 		Connection con = null;
@@ -92,6 +92,6 @@ abstract public class DataBaseManager {
 		return list;
 	}
 
-	abstract public Object copyRecord(ResultSet rs) throws Exception;
+	abstract protected Object copyRecord(ResultSet rs) throws Exception;
 
 }

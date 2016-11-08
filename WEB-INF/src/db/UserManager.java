@@ -8,7 +8,7 @@ import model.User;
 
 public class UserManager extends DataBaseManager{
 
-	public Object copyRecord(ResultSet rs) throws Exception{
+	protected Object copyRecord(ResultSet rs) throws Exception{
 		User user = new User();
 		user.setRid(rs.getInt("RID"));
 		user.setLoginName(rs.getString("LoginName").trim());
@@ -25,5 +25,27 @@ public class UserManager extends DataBaseManager{
 		sql += " AND ";
 		sql += " PassWord = '"+passWord +"'";
 		return (User)getRecord(sql);
+	}
+
+	public void insertUser(User user){
+		String sql = "";
+		sql += "Insert Into UserInfo(";
+		sql +=    "LoginName,";
+		sql +=    "PassWord,";
+		sql +=    "Name,";
+		sql +=    "Email";
+		sql += ")Values(";
+		sql +=    "'"+user.getLoginName()+"'"+",";
+		sql +=    "'"+user.getPassWord()+"'"+",";
+		sql +=    "'"+user.getName()+"'"+",";
+		sql +=    "'"+user.getEmail()+"'";
+		sql += ")";
+		updateRecord(sql);
+	}
+
+	public void deleteAllUser(){
+		String sql = "";
+		sql += "Delete from UserInfo";
+		updateRecord(sql);
 	}
 }
