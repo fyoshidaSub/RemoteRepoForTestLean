@@ -3,6 +3,7 @@ package db;
 import java.sql.ResultSet;
 import java.util.LinkedList;
 
+import common.DataBaseManager;
 import model.User;
 
 
@@ -20,32 +21,32 @@ public class UserManager extends DataBaseManager{
 
 	public User getUser(String loginName,String passWord){
 		String sql = "";
-		sql += "Select * from UserInfo Where ";
+		sql += "Select * from UserInfoX Where ";
 		sql += " LoginName = '"+loginName +"'";
 		sql += " AND ";
 		sql += " PassWord = '"+passWord +"'";
 		return (User)getRecord(sql);
 	}
 
-	public void insertUser(User user){
-		String sql = "";
-		sql += "Insert Into UserInfo(";
-		sql +=    "LoginName,";
-		sql +=    "PassWord,";
-		sql +=    "Name,";
-		sql +=    "Email";
-		sql += ")Values(";
-		sql +=    "'"+user.getLoginName()+"'"+",";
-		sql +=    "'"+user.getPassWord()+"'"+",";
-		sql +=    "'"+user.getName()+"'"+",";
-		sql +=    "'"+user.getEmail()+"'";
-		sql += ")";
-		updateRecord(sql);
-	}
-
-	public void deleteAllUser(){
-		String sql = "";
-		sql += "Delete from UserInfo";
-		updateRecord(sql);
-	}
+//	public void insertUser(User user){
+//		String sql = "";
+//		sql += "Insert Into UserInfo(";
+//		sql +=    "LoginName,";
+//		sql +=    "PassWord,";
+//		sql +=    "Name,";
+//		sql +=    "Email";
+//		sql += ")Values(";
+//		sql +=    "'"+user.getLoginName()+"'"+",";
+//		sql +=    "'"+user.getPassWord()+"'"+",";
+//		sql +=    "'"+user.getName()+"'"+",";
+//		sql +=    "'"+user.getEmail()+"'";
+//		sql += ")";
+//		updateRecord(sql);
+//	}
+//
+//	public void deleteAllUser(){
+//		String sql = "";
+//		sql += "Delete from UserInfo";
+//		updateRecord(sql);
+//	}
 }
