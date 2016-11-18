@@ -1,39 +1,50 @@
-package db;
+﻿package db;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import common.TestDataBase;
 import model.User;
-import testbase.TestDataBase;
 
-public class UserManagerTest extends TestDataBase{
-//	@Before
-//	public void setUp(){
-//		Story01DataBase.setUp();
-//	}
+public class UserManagerTest {
 
 	@Test
-	public void getUserTest() {
-		setTestData("./testdata/Story01TestData.xls");
+	public void ログイン名とパスワードでレコードを取得_成功() {
+		// データベースにテストデータを挿入
+		TestDataBase db=new TestDataBase();
+		db.setTestData("./testdata/story01/dbaccess_test.xls");
 
+		// 登録済みのログイン名とパスワードを指定して、データベースからオブジェクトを読み込み
 		UserManager um=new UserManager();
 		User user=um.getUser("test1","xyz");
 
+		// 読み込んだオブジェクトのプロパティの値が適切かどうかをチェック
 		assertThat(user.getLoginName(),is("test1"));
 		assertThat(user.getPassWord(),is("xyz"));
 		assertThat(user.getName(),is("Mr.x"));
 		assertThat(user.getEmail(),is("mrx@gmail.com"));
 
-//		removeData();
 	}
 
-//	@After
-//	public void tearDown(){
-//		Story01DataBase.tearDown();
-//	}
+	@Test
+	public void ログイン名とパスワードでレコードを取得_失敗() {
+		// データベースにテストデータを挿入
+		TestDataBase db=new TestDataBase();
+		db.setTestData("./testdata/story01/dbaccess_test.xls");
+
+		// 登録されていないログイン名とパスワードを指定して、データベースからオブジェクトを読み込み
+		UserManager um=new UserManager();
+		User user=um.getUser("test","xyz");
+
+		// 読み込んだオブジェクトがNULLになっていることを確認
+		assertThat(user,nullValue());
+
+	}
 
 }
