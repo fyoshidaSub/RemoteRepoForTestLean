@@ -16,7 +16,7 @@ public class UserManager extends DataBaseManager{
 		user.setPassWord(rs.getString("PassWord").trim());
 		user.setName(rs.getString("Name").trim());
 		user.setEmail(rs.getString("Email").trim());
-		user.setEmail(rs.getString("Email").trim());
+		user.setUserType(rs.getInt("UserType"));
 		return user;
 	}
 
