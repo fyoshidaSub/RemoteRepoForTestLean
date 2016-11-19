@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 		User user=um.getUser(loginName,passWord);
 
 		req.setAttribute("User", user);
-		req.getRequestDispatcher("TopAdmin.jsp").forward(req, res);
+		req.getRequestDispatcher("Top.jsp").forward(req, res);
 
 
 	}
