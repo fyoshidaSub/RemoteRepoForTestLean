@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import db.UserManager;
 import model.User;
 
-@WebServlet(name = "LoginServlet", urlPatterns = { "/LoginServlet" })
+@WebServlet(name = "LoginAdminServlet", urlPatterns = { "/LoginAdminServlet" })
 public class LoginAdminServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
