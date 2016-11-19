@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -77,6 +79,28 @@ public class UserManagerTest {
 
 		// 読み込んだオブジェクトがNULLになっていることを確認
 		assertThat(user,nullValue());
+
+	}
+
+	@Test
+	public void 全ユーザを読み込む() {
+		// データベースにテストデータを挿入
+		TestDataBase db=new TestDataBase();
+		db.setTestData("./testdata/story03/dbaccess_test.xls");
+
+		// 登録済みのログイン名とパスワードを指定して、データベースからオブジェクトを読み込み
+		UserManager um=new UserManager();
+		LinkedList<User> users=um.getUsers();
+
+		// 読み込んだオブジェクトのプロパティの値が適切かどうかをチェック
+		assertThat(users.size(),is(3));
+
+		User user=users.get(2);
+		assertThat(user.getLoginName(),is("admin"));
+		assertThat(user.getPassWord(),is("admin"));
+		assertThat(user.getName(),is("Mr.Admin"));
+		assertThat(user.getEmail(),is("admin@gmail.com"));
+		assertThat(user.getUserType(),is(1));
 
 	}
 
