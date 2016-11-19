@@ -15,12 +15,14 @@ public class UserTest {
 		user.setPassWord("xyz");
 		user.setName("Mr.x");
 		user.setEmail("mrx@gmail.com");
+		user.setUserType(1);
 
 		assertThat(user.getRid(),is(1));
 		assertThat(user.getLoginName(),is("test"));
 		assertThat(user.getPassWord(),is("xyz"));
 		assertThat(user.getName(),is("Mr.x"));
 		assertThat(user.getEmail(),is("mrx@gmail.com"));
+		assertThat(user.getUserType(),is(1));
 
 	}
 

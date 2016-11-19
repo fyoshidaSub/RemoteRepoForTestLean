@@ -7,6 +7,7 @@ public class User {
 	private String passWord;
 	private String name;
 	private String email;
+	private int userType;
 
 	public int getRid() {
 		return rid;
@@ -23,6 +24,9 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
+	public int getUserType(){
+		return userType;
+	}
 
 	public void setRid(int rid) {
 		this.rid = rid;
@@ -38,6 +42,9 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public void setUserType(int userType){
+		this.userType=userType;
 	}
 
 }
